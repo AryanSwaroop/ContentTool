@@ -1,26 +1,31 @@
 from fastapi import FastAPI
 from services.openAi import findAiAnswer
-from pydantic import BaseModel
+from services.googleSearch import googleSearch
+from services.soundAi import soundAi
 
-app = FastAPI()
 
-class promptObject(BaseModel):
-    promptQ: str
+# from pydantic import BaseModel
 
-class answerObject(BaseModel):
-    ans: str
+# app = FastAPI()
 
-@app.get("/")
-async def root():
-    return { "data" : "Main port"}
+# class promptObject(BaseModel):
+#     promptQ: str
 
-@app.post("/generate/", response_model=answerObject)
-async def generate_answer(user: promptObject):
+# class answerObject(BaseModel):
+#     ans: str
 
-    try:
-        answer = await findAiAnswer(user.promptQ)
-        return answerObject(ans=answer)
+# @app.get("/")
+# async def root():
+#     return { "data" : "Main port"}
+
+# @app.post("/generate/", response_model=answerObject)
+# async def generate_answer(user: promptObject):
+
+#     try:
+#         answer = findAiAnswer(user.promptQ)
+#         return answerObject(ans=answer)
     
-    except Exception as e:
-        print(str(e))
-        return str(e)
+#     except Exception as e:
+#         print(str(e))
+#         return str(e)
+    
