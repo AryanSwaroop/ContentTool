@@ -9,36 +9,50 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from selenium_stealth import stealth
 
-class TestGenmoAi():
+class TestImagine():
   def setup_method(self, method):
     self.driver = webdriver.Chrome()
     self.vars = {}
-    stealth(self.driver,
-      languages=["en-US", "en"],
-      vendor="Google Inc.",
-      platform="Win32",
-      webgl_vendor="Intel Inc.",
-      renderer="Intel Iris OpenGL Engine",
-      fix_hairline = True)
+    self.driver.maximize_window()
   
   def teardown_method(self, method):
     self.driver.quit()
   
-  def test_genmoAi(self):
-    self.driver.get("https://www.genmo.ai/")
-    self.driver.set_window_size(584, 960)
-    self.driver.find_element(By.CSS_SELECTOR, ".caret-primary").click()
-    self.driver.find_element(By.CSS_SELECTOR, ".caret-primary").send_keys("Make a video on freelancers")
-    self.driver.find_element(By.CSS_SELECTOR, ".\\!duration-200 > .font-medium").click()
-    self.driver.find_element(By.CSS_SELECTOR, ".lg\\3Ahidden > .group").click()
-    element = self.driver.find_element(By.CSS_SELECTOR, ".lg\\3Ahidden > .group")
+  def test_imagine(self):
+    self.driver.get("https://www.imagine.art/")
+    self.driver.find_element(By.LINK_TEXT, "Sign in").click()
+    self.driver.find_element(By.ID, "email").click()
+    self.driver.find_element(By.ID, "email").send_keys("swarooparyan2014@gmail.com")
+    self.driver.find_element(By.CSS_SELECTOR, ".hover\\3A bg-neutral-800").click()
+    element = self.driver.find_element(By.CSS_SELECTOR, ".hover\\3A bg-neutral-800")
     actions = ActionChains(self.driver)
     actions.move_to_element(element).perform()
     element = self.driver.find_element(By.CSS_SELECTOR, "body")
     actions = ActionChains(self.driver)
     actions.move_to_element(element, 0, 0).perform()
-    self.driver.find_element(By.CSS_SELECTOR, "li:nth-child(1) .card > div > .w-full > .absolute").click()
-    self.driver.close()
+    self.driver.find_element(By.CSS_SELECTOR, ".bg-primary-500:nth-child(2)").click()
+    self.driver.find_element(By.ID, "password").click()
+    self.driver.find_element(By.ID, "password").send_keys("1234@Aryan")
+    self.driver.find_element(By.CSS_SELECTOR, ".whitespace-nowrap:nth-child(2)").click()
+    element = self.driver.find_element(By.CSS_SELECTOR, ".flex:nth-child(3) > .flex:nth-child(2) > .flex:nth-child(1)")
+    actions = ActionChains(self.driver)
+    actions.move_to_element(element).perform()
+    element = self.driver.find_element(By.CSS_SELECTOR, "body")
+    actions = ActionChains(self.driver)
+    actions.move_to_element(element, 0, 0).perform()
+    self.driver.find_element(By.CSS_SELECTOR, ".flex:nth-child(3) > .flex:nth-child(3) .ml-2").click()
+    element = self.driver.find_element(By.LINK_TEXT, "Image to Video")
+    actions = ActionChains(self.driver)
+    actions.move_to_element(element).perform()
+    element = self.driver.find_element(By.CSS_SELECTOR, "body")
+    actions = ActionChains(self.driver)
+    actions.move_to_element(element, 0, 0).perform()
+    self.driver.find_element(By.CSS_SELECTOR, ".focus-within\\3A\\!bg-neutral-20").click()
+    self.driver.find_element(By.ID, ":r6:").send_keys("create a video on doraemon")
+    self.driver.find_element(By.CSS_SELECTOR, ".bg-primary-500").click()
+    self.driver.execute_script("window.scrollTo(0,0)")
+    self.driver.find_element(By.CSS_SELECTOR, "#radix-\\3Arh\\3A-content-masonry div:nth-child(3)").click()
+    self.driver.find_element(By.CSS_SELECTOR, ".justify-end").click()
+    self.driver.find_element(By.CSS_SELECTOR, ".items-center:nth-child(2) > .disabled\\3A cursor-default").click()
   
