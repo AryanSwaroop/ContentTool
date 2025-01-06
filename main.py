@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from services.openAi import findAiAnswer
 from services.googleSearch import googleSearch
 from services.soundAi import soundAi
+from elevenlabs import stream
 
 
 def generateContent(topic):
@@ -9,6 +10,7 @@ def generateContent(topic):
     prompt = findAiAnswer(str(linkArray))
 
     print(prompt)
+    stream(soundAi(prompt))
 
 
 generateContent("freelancers of india")
