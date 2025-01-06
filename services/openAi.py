@@ -13,11 +13,10 @@ def findAiAnswer(prompt : str):
     model="gpt-4o-mini",
     store=True,
     messages=[
-      {"role": "user", "content": prompt}
+      {"role": "user", "content": prompt + "These are the links i found for you now make an all text script for a reel , make it a single paragraph of words woth no scene or other things."}
     ]
   )
 
-  print(completion.choices[0].message.content)
   return completion.choices[0].message.content 
 
 

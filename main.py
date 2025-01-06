@@ -2,7 +2,17 @@ from fastapi import FastAPI
 from services.openAi import findAiAnswer
 from services.googleSearch import googleSearch
 from services.soundAi import soundAi
-from services.test_creatorTool import TestCreatorTool
+
+
+def generateContent(topic):
+    linkArray = googleSearch(topic)
+    prompt = findAiAnswer(str(linkArray))
+
+    print(prompt)
+
+
+generateContent("freelancers of india")
+
 
 
 # from pydantic import BaseModel
