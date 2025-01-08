@@ -4,8 +4,9 @@ pip install requirements.txt
 ```
 
 **Adding Environment Variables**
-```
+
 create an env file with following structure:-
+```
 openAiKey=""
 elevenLabs=""
 GoogleCustomSearch=""
