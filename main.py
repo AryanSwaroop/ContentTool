@@ -1,20 +1,34 @@
-from fastapi import FastAPI
+#from fastapi import FastAPI
 from services.openAi import findAiAnswer
 from services.googleSearch import googleSearch
 from services.soundAi import soundAi
 from elevenlabs import stream
+from services.videoApi import videoGeneration
+import argparse
+import asyncio
 
 
-def generateContent(topic):
+
+async def generateContent(topic):
+
     linkArray = googleSearch(topic)
+        
     prompt = findAiAnswer(str(linkArray))
 
     print(prompt)
-    stream(soundAi(prompt))
+ #   stream(soundAi(prompt))
+
+    videoGeneration(prompt)
+
+async def main():
+    parser = argparse.ArgumentParser(description='Generate content for a video with topic')
+    parser.add_argument('topic', type=str, help='Topic for the video')
+    args = parser.parse_args()
+    await generateContent(args.topic)
 
 
-generateContent("freelancers of india")
-
+if __name__ == "__main__":
+    asyncio.run(main())
 
 
 # from pydantic import BaseModel

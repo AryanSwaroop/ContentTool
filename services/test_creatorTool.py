@@ -9,50 +9,33 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium_stealth import stealth
 
-class TestImagine():
+class TestUntitled():
   def setup_method(self, method):
     self.driver = webdriver.Chrome()
     self.vars = {}
-    self.driver.maximize_window()
+    stealth(self.driver)
   
   def teardown_method(self, method):
     self.driver.quit()
   
-  def test_imagine(self):
-    self.driver.get("https://www.imagine.art/")
-    self.driver.find_element(By.LINK_TEXT, "Sign in").click()
-    self.driver.find_element(By.ID, "email").click()
-    self.driver.find_element(By.ID, "email").send_keys("swarooparyan2014@gmail.com")
-    self.driver.find_element(By.CSS_SELECTOR, ".hover\\3A bg-neutral-800").click()
-    element = self.driver.find_element(By.CSS_SELECTOR, ".hover\\3A bg-neutral-800")
+  def test_untitled(self):
+    self.driver.get("https://www.genmo.ai/")
+    self.driver.implicitly_wait(5)
+    self.driver.set_window_size(838, 940)
+    self.driver.find_element(By.CSS_SELECTOR, ".md\\3Ajustify-between").click()
+    self.driver.find_element(By.CSS_SELECTOR, ".caret-primary").click()
+    self.driver.find_element(By.CSS_SELECTOR, ".caret-primary").send_keys("make a video of dog wearing bow")
+    self.driver.find_element(By.CSS_SELECTOR, ".\\!h-\\[34px\\]").click()
+    element = self.driver.find_element(By.CSS_SELECTOR, ".\\!h-\\[34px\\]")
     actions = ActionChains(self.driver)
     actions.move_to_element(element).perform()
     element = self.driver.find_element(By.CSS_SELECTOR, "body")
     actions = ActionChains(self.driver)
     actions.move_to_element(element, 0, 0).perform()
-    self.driver.find_element(By.CSS_SELECTOR, ".bg-primary-500:nth-child(2)").click()
-    self.driver.find_element(By.ID, "password").click()
-    self.driver.find_element(By.ID, "password").send_keys("1234@Aryan")
-    self.driver.find_element(By.CSS_SELECTOR, ".whitespace-nowrap:nth-child(2)").click()
-    element = self.driver.find_element(By.CSS_SELECTOR, ".flex:nth-child(3) > .flex:nth-child(2) > .flex:nth-child(1)")
-    actions = ActionChains(self.driver)
-    actions.move_to_element(element).perform()
-    element = self.driver.find_element(By.CSS_SELECTOR, "body")
-    actions = ActionChains(self.driver)
-    actions.move_to_element(element, 0, 0).perform()
-    self.driver.find_element(By.CSS_SELECTOR, ".flex:nth-child(3) > .flex:nth-child(3) .ml-2").click()
-    element = self.driver.find_element(By.LINK_TEXT, "Image to Video")
-    actions = ActionChains(self.driver)
-    actions.move_to_element(element).perform()
-    element = self.driver.find_element(By.CSS_SELECTOR, "body")
-    actions = ActionChains(self.driver)
-    actions.move_to_element(element, 0, 0).perform()
-    self.driver.find_element(By.CSS_SELECTOR, ".focus-within\\3A\\!bg-neutral-20").click()
-    self.driver.find_element(By.ID, ":r6:").send_keys("create a video on doraemon")
-    self.driver.find_element(By.CSS_SELECTOR, ".bg-primary-500").click()
-    self.driver.execute_script("window.scrollTo(0,0)")
-    self.driver.find_element(By.CSS_SELECTOR, "#radix-\\3Arh\\3A-content-masonry div:nth-child(3)").click()
-    self.driver.find_element(By.CSS_SELECTOR, ".justify-end").click()
-    self.driver.find_element(By.CSS_SELECTOR, ".items-center:nth-child(2) > .disabled\\3A cursor-default").click()
+    self.driver.find_element(By.CSS_SELECTOR, ".lg\\3Ahidden > .group").click()
+    self.driver.find_element(By.CSS_SELECTOR, ".text-\\[10px\\]").click()
+    self.driver.find_element(By.CSS_SELECTOR, ".relative:nth-child(1) > .relative > .relative > .card > div > .w-full > .absolute").click()
+    self.driver.find_element(By.CSS_SELECTOR, ".flex:nth-child(1) > .relative > .relative > .card > div > .w-full > .absolute").click()
   
