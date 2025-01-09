@@ -4,10 +4,25 @@ from services.googleSearch import googleSearch
 from services.soundAi import soundAi
 from elevenlabs import stream
 from services.videoApi import videoGeneration
+from services.stockGen import StockContent
+from services.streamToAudio import convert_to_mp3
+from services.mergeAudioVideo import merge_audio_video
 import argparse
 import asyncio
 
+async def generateStockContent(topic):
 
+    linkArray = googleSearch(topic)
+    prompt = findAiAnswer(str(linkArray))
+    audioStream = soundAi(prompt)
+
+    # Creating mp4 and mp3 files
+    StockContent(topic)
+    convert_to_mp3(audioStream , "../temp/output.mp3")
+
+    # Merging the audio and video files
+    merge_audio_video("../temp/video.mp4", "../temp/output.mp3", "../temp/output.mp4")
+    
 
 async def generateContent(topic):
 
@@ -16,15 +31,24 @@ async def generateContent(topic):
     prompt = findAiAnswer(str(linkArray))
 
     print(prompt)
- #   stream(soundAi(prompt))
+    stream(soundAi(prompt))
 
     videoGeneration(prompt)
 
 async def main():
-    parser = argparse.ArgumentParser(description='Generate content for a video with topic')
-    parser.add_argument('topic', type=str, help='Topic for the video')
+    parser = argparse.ArgumentParser(description="Generate content for a video or stock content.")
+    parser.add_argument("topic", type=str, help="Topic for the content")
+    parser.add_argument(
+        "--stock",
+        action="store_true",
+        help="Generate stock content (video + audio)",
+    )
     args = parser.parse_args()
-    await generateContent(args.topic)
+
+    if args.stock:
+        await generateStockContent(args.topic)
+    else:
+        await generateContent(args.topic)
 
 
 if __name__ == "__main__":
