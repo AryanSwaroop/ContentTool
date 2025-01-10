@@ -5,24 +5,26 @@ from services.soundAi import soundAi
 from elevenlabs import stream
 from services.videoApi import videoGeneration
 from services.stockGen import StockContent
-from services.streamToAudio import convert_to_mp3
+from services.streamToAudio import save_audio_stream
 from services.mergeAudioVideo import merge_audio_video
 import argparse
 import asyncio
 
+
 async def generateStockContent(topic):
+    try:
+        linkArray = googleSearch(topic)
+        prompt = findAiAnswer(str(linkArray))
+        audioStream = soundAi(prompt)
 
-    linkArray = googleSearch(topic)
-    prompt = findAiAnswer(str(linkArray))
-    audioStream = soundAi(prompt)
+        # Creating mp4 and mp3 files
+        StockContent(topic)
+        save_audio_stream(audioStream , "../temp/output.wav")
 
-    # Creating mp4 and mp3 files
-    StockContent(topic)
-    convert_to_mp3(audioStream , "../temp/output.mp3")
+#    Merging the audio and video files
+    finally:
+      merge_audio_video("../temp/video.mp4", "../temp/output.wav", "../temp/output.mp4")
 
-    # Merging the audio and video files
-    merge_audio_video("../temp/video.mp4", "../temp/output.mp3", "../temp/output.mp4")
-    
 
 async def generateContent(topic):
 
