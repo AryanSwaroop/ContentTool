@@ -29,7 +29,7 @@ python main.py <Your topic to make content on as a string> --stock
 
 # **Sample Video**
 
-https://github.com/user-attachments/assets/e9417948-4260-4bda-b545-a78174822bf1
+https://github.com/user-attachments/assets/5f0020de-d420-4a64-9238-06830242964d
 
 # **License**
 
