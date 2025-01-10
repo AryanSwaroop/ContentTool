@@ -1,11 +1,11 @@
-**Installation**
+# **Installation**
 ```
 pip install requirements.txt
 ```
 
-**Adding Environment Variables**
+# **Adding Environment Variables**
 
-create an env file with following structure:-
+## create an env file with following structure:-
 ```
 openAiKey=""
 elevenLabs=""
@@ -15,7 +15,7 @@ AiVideoApi=""
 TavusIoApi=""
 ```
 
-**Running Script**
+# **Running Script**
 
 1. For Generation with AI replica platform.
 ```
@@ -27,14 +27,14 @@ python main.py <Your Topic to make content on>
 python main.py <Your topic to make content on as a string> --stock
 ```
 
-**Sample Video**
+# **Sample Video**
 
 https://github.com/user-attachments/assets/e9417948-4260-4bda-b545-a78174822bf1
 
-**License**
+# **License**
 
-[MIT LICENSE](LICENSE)
+## [MIT LICENSE](LICENSE)
 
-**Create your own content and share this tool. Contributions are also invited for more features**
+## **Create your own content and share this tool. Contributions are also invited for more features**
 
 
