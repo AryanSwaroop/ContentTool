@@ -26,3 +26,11 @@ python main.py <Your Topic to make content on>
 ```
 python main.py <Your topic to make content on as a string> --stock
 ```
+
+**Sample Video**
+
+https://github.com/user-attachments/assets/e9417948-4260-4bda-b545-a78174822bf1
+
+**Create your own content and share this tool**
+
+
