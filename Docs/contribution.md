@@ -7,7 +7,7 @@ Thank you for your interest in contributing to AutoCret! We welcome contribution
 We are currently working on improving the documentation for AutoCret. Below are the details:
 
 - **Issue:** Improving documentation for AutoCret
-- **Source Repository:** [AutoCret GitHub Repository](https://github.com/your-repo/autocret) (Replace with actual link)
+- **Source Repository:** [AutoCret GitHub Repository](https://github.com/your-repo/autocret)
 
 ## How to Contribute
 
