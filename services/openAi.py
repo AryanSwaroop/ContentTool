@@ -13,7 +13,7 @@ def findAiAnswer(prompt : str):
     model="gpt-4o-mini",
     store=True,
     messages=[
-      {"role": "user", "content": prompt + "These are the links i found for you now make an all text script for a reel , make it a single paragraph of words woth no scene or other things. give a 10 word message."}
+      {"role": "user", "content": prompt + "These are the links i found for you now make an all text script for a reel , make it a single paragraph of words woth no scene or other things. give a 30 word message."}
     ]
   )
 
